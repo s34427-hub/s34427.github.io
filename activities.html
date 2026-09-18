@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Apisada Klahan - ผลงานและกิจกรรม</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Kanit", sans-serif;
+            color: #000000;
+            overflow-x: hidden;
+            background: #FFFFFF;
+        }
+
+        /* BACKGROUND */
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -100;
+            overflow: hidden;
+            background: radial-gradient(
+                circle at center,
+                #003399 0%,
+                #003399 18%,
+                #1747A6 35%,
+                #5E7FC4 52%,
+                #B8C7E5 72%,
+                #FFFFFF 100%
+            );
+        }
+
+        /* ดาวพื้นหลัง */
+        .star {
+            position: absolute;
+            color: #FFFACD;
+            user-select: none;
+            pointer-events: none;
+            text-shadow:
+                0 0 8px rgba(255,250,205,0.8),
+                0 0 18px rgba(255,250,205,0.5);
+            animation: starFloat var(--duration) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes starFloat {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.35;
+            }
+            25% {
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-35px) translateX(20px) rotate(25deg);
+                opacity: 1;
+            }
+            75% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.35;
+            }
+        }
+
+        /* ตำแหน่งดาว */
+        .s1  { top: 5%;  left: 5%;  font-size: 18px; --duration: 5s;  --delay: 0s; }
+        .s2  { top: 8%;  left: 18%; font-size: 35px; --duration: 7s;  --delay: 1s; }
+        .s3  { top: 4%;  left: 32%; font-size: 13px; --duration: 4s;  --delay: 2s; }
+        .s4  { top: 12%; left: 45%; font-size: 27px; --duration: 8s;  --delay: 0.5s; }
+        .s5  { top: 5%;  left: 58%; font-size: 16px; --duration: 6s;  --delay: 3s; }
+        .s6  { top: 15%; left: 72%; font-size: 42px; --duration: 9s;  --delay: 1.5s; }
+        .s7  { top: 7%;  left: 88%; font-size: 20px; --duration: 5s;  --delay: 2.5s; }
+        .s8  { top: 25%; left: 3%;  font-size: 38px; --duration: 8s;  --delay: 1s; }
+        .s9  { top: 30%; left: 14%; font-size: 15px; --duration: 5s;  --delay: 3s; }
+        .s10 { top: 23%; left: 27%; font-size: 25px; --duration: 6s;  --delay: 0s; }
+        .s11 { top: 35%; left: 39%; font-size: 12px; --duration: 4s;  --delay: 2s; }
+        .s12 { top: 28%; left: 52%; font-size: 45px; --duration: 10s; --delay: 1s; }
+        .s13 { top: 38%; left: 66%; font-size: 19px; --duration: 6s;  --delay: 2s; }
+        .s14 { top: 25%; left: 80%; font-size: 31px; --duration: 7s;  --delay: 4s; }
+        .s15 { top: 35%; left: 94%; font-size: 14px; --duration: 5s;  --delay: 1s; }
+        .s16 { top: 48%; left: 5%;  font-size: 22px; --duration: 7s;  --delay: 2s; }
+        .s17 { top: 55%; left: 17%; font-size: 40px; --duration: 9s;  --delay: 0s; }
+        .s18 { top: 45%; left: 30%; font-size: 14px; --duration: 5s;  --delay: 3s; }
+        .s19 { top: 58%; left: 43%; font-size: 30px; --duration: 8s;  --delay: 1s; }
+        .s20 { top: 47%; left: 56%; font-size: 17px; --duration: 4s;  --delay: 2s; }
+        .s21 { top: 60%; left: 69%; font-size: 38px; --duration: 9s;  --delay: 1.5s; }
+        .s22 { top: 50%; left: 82%; font-size: 21px; --duration: 6s;  --delay: 3s; }
+        .s23 { top: 62%; left: 94%; font-size: 32px; --duration: 7s;  --delay: 0.5s; }
+        .s24 { top: 70%; left: 4%;  font-size: 12px; --duration: 5s;  --delay: 1s; }
+        .s25 { top: 78%; left: 16%; font-size: 34px; --duration: 8s;  --delay: 2s; }
+        .s26 { top: 68%; left: 29%; font-size: 20px; --duration: 6s;  --delay: 0s; }
+        .s27 { top: 82%; left: 41%; font-size: 44px; --duration: 10s; --delay: 3s; }
+        .s28 { top: 72%; left: 55%; font-size: 15px; --duration: 5s;  --delay: 1s; }
+        .s29 { top: 85%; left: 67%; font-size: 29px; --duration: 7s;  --delay: 2s; }
+        .s30 { top: 75%; left: 79%; font-size: 18px; --duration: 6s;  --delay: 4s; }
+        .s31 { top: 88%; left: 90%; font-size: 40px; --duration: 9s;  --delay: 1s; }
+        .s32 { top: 92%; left: 8%;  font-size: 25px; --duration: 6s;  --delay: 2s; }
+        .s33 { top: 94%; left: 25%; font-size: 13px; --duration: 4s;  --delay: 0s; }
+        .s34 { top: 91%; left: 52%; font-size: 35px; --duration: 8s;  --delay: 3s; }
+        .s35 { top: 95%; left: 73%; font-size: 16px; --duration: 5s;  --delay: 1s; }
+
+        /* PAGE */
+        .page {
+            display: block;
+            min-height: 100vh;
+            padding: 80px 150px 80px 7%;
+            animation: pageOpen 0.7s ease;
+        }
+
+        @keyframes pageOpen {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* HOME */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 180px 80px 7%;
+        }
+
+        .main-title {
+            color: #000000;
+            font-size: clamp(55px, 9vw, 135px);
+            font-weight: 700;
+            letter-spacing: 3px;
+            white-space: nowrap;
+            text-shadow: 0 4px 15px rgba(255,255,255,0.7);
+        }
+
+        .main-subtitle {
+            margin-top: 8px;
+            font-size: 21px;
+            color: #000000;
+        }
+
+        /* PROFILE IMAGE */
+        .profile-image {
+            width: 50vw;
+            min-width: 400px;
+            max-width: 650px;
+            aspect-ratio: 4 / 3;
+            margin: 30px auto;
+            border: 4px solid #000000;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.8);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+        }
+
+        .image-placeholder {
+            color: #000000;
+            font-size: 17px;
+            padding: 20px;
+        }
+
+        /* HOME INFO */
+        .home-info {
+            width: min(900px, 95%);
+            padding: 30px 40px;
+            background: rgba(255,255,255,0.9);
+            border: 3px solid #000000;
+            border-radius: 22px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+
+        .home-info p {
+            color: #000000;
+            font-size: clamp(16px, 1.8vw, 21px);
+            line-height: 1.8;
+            margin: 7px 0;
+        }
+
+        .home-info strong {
+            font-weight: 600;
+        }
+
+        /* PAGE TITLE */
+        .page-title {
+            text-align: center;
+            color: #000000;
+            font-size: clamp(48px, 7vw, 90px);
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-shadow: 0 4px 15px rgba(255,255,255,0.7);
+        }
+
+        /* CONTENT BOX */
+        .content-box {
+            width: min(1000px, 95%);
+            margin: auto;
+            padding: 40px 50px;
+            background: rgba(255,255,255,0.93);
+            border: 3px solid #000000;
+            border-radius: 25px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.22);
+        }
+
+        .content-box h2 {
+            color: #000000;
+            font-size: 31px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 10px;
+        }
+
+        .content-box p {
+            color: #000000;
+            font-size: 19px;
+            line-height: 2;
+            margin-bottom: 12px;
+        }
+
+        /* PERSONAL DATA */
+        .data-row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .data-label {
+            min-width: 290px;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .data-value {
+            flex: 1;
+            color: #000000;
+        }
+
+        /* ACTIVITIES */
+        .activity {
+            width: min(950px, 95%);
+            margin: 0 auto 45px;
+            padding: 30px;
+            background: rgba(255,255,255,0.94);
+            border: 3px solid #000000;
+            border-radius: 25px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+
+        .activity-image {
+            width: 100%;
+            max-width: 750px;
+            aspect-ratio: 3 / 2;
+            margin: 0 auto 25px;
+            border: 3px dashed #000000;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.7);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .activity-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .activity-placeholder {
+            color: #000000;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .activity h3 {
+            color: #000000;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .activity p {
+            color: #000000;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        /* CONTACT */
+        .contact-container {
+            width: min(850px, 95%);
+            margin: auto;
+            display: grid;
+            gap: 25px;
+        }
+
+        .contact-card {
+            padding: 30px;
+            background: rgba(255,255,255,0.94);
+            border: 3px solid #000000;
+            border-radius: 25px;
+            text-align: center;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-card:hover {
+            transform: translateX(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .contact-card h2 {
+            color: #000000;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            color: #000000;
+            font-size: 21px;
+        }
+
+        /* RIGHT NAVIGATION */
+        .side-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 17px;
+            align-items: center;
+        }
+
+        /* NAV BUTTON */
+        .nav-button {
+            position: relative;
+            width: 145px;
+            min-height: 55px;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.92);
+            border: 2px solid #000000;
+            border-radius: 15px;
+            color: #000000;
+            font-family: "Kanit", sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.18);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .nav-button::before {
+            content: "★  ";
+            color: #FFFACD;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        .nav-button::after {
+            content: "  ★";
+            color: #FFFACD;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        .nav-button:hover,
+        .nav-button.active {
+            background: #FFFACD;
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .nav-button span {
+            position: absolute;
+            color: #FFFACD;
+            font-size: 10px;
+            pointer-events: none;
+        }
+
+        .nav-button span:nth-child(1) {
+            top: -11px;
+            left: 20px;
+        }
+
+        .nav-button span:nth-child(2) {
+            bottom: -11px;
+            right: 20px;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1100px) {
+            .page {
+                padding: 70px 130px 100px 5%;
+            }
+            .home {
+                padding: 50px 130px 80px 5%;
+            }
+            .side-nav {
+                right: 12px;
+                gap: 10px;
+            }
+            .nav-button {
+                width: 125px;
+                font-size: 13px;
+                min-height: 48px;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .page {
+                padding: 55px 5% 120px;
+            }
+            .home {
+                padding: 45px 5% 120px;
+            }
+            .main-title {
+                font-size: 52px;
+                letter-spacing: 1px;
+            }
+            .profile-image {
+                width: 90%;
+                min-width: 0;
+            }
+            .home-info {
+                padding: 25px;
+            }
+            .content-box {
+                padding: 25px;
+            }
+            .data-row {
+                display: block;
+            }
+            .data-label {
+                min-width: 0;
+                display: block;
+                margin-bottom: 3px;
+            }
+            .side-nav {
+                left: 50%;
+                right: auto;
+                top: auto;
+                bottom: 10px;
+                transform: translateX(-50%);
+                width: 96%;
+                flex-direction: row;
+                overflow-x: auto;
+                padding: 8px 10px;
+                background: rgba(255,255,255,0.95);
+                border: 2px solid #000000;
+                border-radius: 18px;
+                justify-content: flex-start;
+            }
+            .nav-button {
+                flex: 0 0 auto;
+                width: auto;
+                min-width: 105px;
+                font-size: 12px;
+                padding: 9px 10px;
+            }
+            .nav-button::before,
+            .nav-button::after {
+                display: none;
+            }
+            .nav-button span {
+                display: none;
+            }
+            .activity {
+                padding: 20px;
+            }
+            .activity h3 {
+                font-size: 21px;
+            }
+            .activity p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BACKGROUND -->
+    <div class="background">
+        <span class="star s1">★</span>
+        <span class="star s2">★</span>
+        <span class="star s3">★</span>
+        <span class="star s4">★</span>
+        <span class="star s5">★</span>
+        <span class="star s6">★</span>
+        <span class="star s7">★</span>
+        <span class="star s8">★</span>
+        <span class="star s9">★</span>
+        <span class="star s10">★</span>
+        <span class="star s11">★</span>
+        <span class="star s12">★</span>
+        <span class="star s13">★</span>
+        <span class="star s14">★</span>
+        <span class="star s15">★</span>
+        <span class="star s16">★</span>
+        <span class="star s17">★</span>
+        <span class="star s18">★</span>
+        <span class="star s19">★</span>
+        <span class="star s20">★</span>
+        <span class="star s21">★</span>
+        <span class="star s22">★</span>
+        <span class="star s23">★</span>
+        <span class="star s24">★</span>
+        <span class="star s25">★</span>
+        <span class="star s26">★</span>
+        <span class="star s27">★</span>
+        <span class="star s28">★</span>
+        <span class="star s29">★</span>
+        <span class="star s30">★</span>
+        <span class="star s31">★</span>
+        <span class="star s32">★</span>
+        <span class="star s33">★</span>
+        <span class="star s34">★</span>
+        <span class="star s35">★</span>
+    </div>
+    <section id="activities" class="page">
+        <h1 class="page-title">ผลงานและกิจกรรม</h1>
+
+        <!-- ACTIVITY 1 -->
+        <div class="activity">
+            <div class="activity-image">
+                <img src="images/activity1.jpg" alt="ผลงานและกิจกรรมที่ 1 การแข่งขันต่อคำศัพท์ภาษาไทย ได้รับรางวัล เหรียญทองอันดับที่ 1 ระดับภาคตะวันออกและภาคกลาง รุ่นมัธยมศึกษาตอนต้น และ ได้รับรางวัลเหรียญทองแดง ระดับภาคตะวันออกและภาคกลาง รุ่นมัธยมศึกษาตอนปลาย" onerror="this.style.display='none';">
+            </div>
+        </div> 
+
+        <!-- ACTIVITY 2 -->
+        <div class="activity">
+            <div class="activity-image">
+                <img src="images/activity2.jpg" alt="ผลงานและกิจกรรมที่ 2 เข้าร่วมโครงการค่าย OPEN CAPSULE(ONLINE) ครั้งที่ 22 คณะเภสัชศาสตร์ มหาวิทยาลัยมหิดล ได้เข้าร่วมกิจกรรมและเรียนรู้เกี่ยวกับการเรียนและการทำงานของอาชีพเภสัชกรรม">
+            </div>
+        </div>
+
+        <!-- ACTIVITY 3 -->
+        <div class="activity">
+            <div class="activity-image">
+                <img src="images/activity3.jpg" alt="ผลงานและกิจกรรมที่ 3 เป็นวิทยากรวันวิทยาศาสตร์และเทคโนโลยี โรงเรียนบ้านบึงอุตสาหกรรมนุเคราะห์ ได้ให้ความรู้เกี่ยวกับวิทยาศาสตร์ให้แก่ผู้อื่น">
+            </div>
+        </div>
+    </section>
+    <nav class="side-nav">
+        <a href="index.html" class="nav-button">
+            <span>★</span>
+            หน้าหลัก
+            <span>★</span>
+        </a>
+        <a href="preface.html" class="nav-button">
+            <span>★</span>
+            คำนำ
+            <span>★</span>
+        </a>
+        <a href="profile.html" class="nav-button">
+            <span>★</span>
+            ประวัติส่วนตัว
+            <span>★</span>
+        </a>
+        <a href="activities.html" class="nav-button active">
+            <span>★</span>
+            ผลงานและกิจกรรม
+            <span>★</span>
+        </a>
+        <a href="contact.html" class="nav-button">
+            <span>★</span>
+            ช่องทางการติดต่อ
+            <span>★</span>
+        </a>
+    </nav>
+</body>
+</html>
